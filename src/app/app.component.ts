@@ -12,6 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
       <img mat-card-image src="{{ cards[0].image }}">
       <mat-card-actions>
         <button mat-button color="secondary" (click)="start()" >PLAY</button>
+        <button mat-button color="secondary" (click)="start()" >write</button>
       </mat-card-actions>
     </mat-card>
     
@@ -61,13 +62,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   `]
 })
 export class AppComponent {
-  cards = [{
-    title: 'Giraffe',
-    image: '/assets/images/giraffe.jpg',
-    id: 'GIRAFFE',
-    audio: '/assets/audio/giraffe.mp3',
-    color: "#ffffff"
-  }, {
+  cards = [ {
     title: 'Mouse',
     image: '/assets/images/mouse.jpg',
     id: 'MOUSE',
@@ -84,12 +79,6 @@ export class AppComponent {
     image: '/assets/images/bee.jpg',
     id: 'BEE',
     audio: '/assets/audio/bee.mp3',
-    color: "#ffffff"
-  }, {
-    title: 'Monkey',
-    image: '/assets/images/monkey.jpg',
-    id: 'MONKEY',
-    audio: '/assets/audio/monkey.mp3',
     color: "#ffffff"
   }, {
     title: 'Cat',
@@ -109,18 +98,6 @@ export class AppComponent {
     id: 'PANDA',
     audio: '/assets/audio/panda.mp3',
     color: "#ffffff"
-  }, {
-    title: 'Bear',
-    image: '/assets/images/bear.jpg',
-    id: 'BEAR',
-    audio: '/assets/audio/bear.mp3',
-    color: "#ffffff"
-  }, {
-    title: 'Dog',
-    image: '/assets/images/dog.jpg',
-    id: 'DOG',
-    audio: '/assets/audio/dog.mp3',
-    color: "#ffffff"
   }];
 
   isScanning = false;
@@ -132,7 +109,7 @@ export class AppComponent {
       const ndef = new (window as any).NDEFReader();
       this.isScanning = true;
       await ndef.scan();
-      this.notify("Scanning...");
+      this.notify("Scanning a tag...");
 
       ndef.addEventListener("readingerror", () => {
         this.notify(`Error reading tag`);
@@ -158,7 +135,7 @@ export class AppComponent {
         this.play('cat');
       });
     } catch (error) {
-      this.notify(error);
+      this.notify(error + " try it on smartphone with Chrome Browser");
       this.isScanning = false;
     }
   }
@@ -187,5 +164,9 @@ export class AppComponent {
     player.play();
     player.onended = () => card.classList.remove('mat-elevation-z8');
     this.notify(id);
+  }
+
+  write(id: string) {
+
   }
 }
