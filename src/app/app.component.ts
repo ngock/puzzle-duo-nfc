@@ -12,7 +12,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
       <img mat-card-image src="{{ cards[0].image }}">
       <mat-card-actions>
         <button mat-button color="secondary" (click)="start()" >PLAY</button>
-        <button mat-button color="secondary" (click)="start()" >write</button>
       </mat-card-actions>
     </mat-card>
     
@@ -28,6 +27,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
           <mat-card-actions>
             <button mat-button color="primary" (click)="save(card.id)" >SAVE</button>
             <button mat-button color="secondary" (click)="player.play()" >PLAY</button>
+            <button mat-button color="secondary" (click)="write()">WRITE</button>
           </mat-card-actions>
         </mat-card>
 
@@ -135,7 +135,7 @@ export class AppComponent {
         this.play('cat');
       });
     } catch (error) {
-      this.notify(error + " try it on smartphone with Chrome Browser");
+      this.notify(error + " try it on smartphone with Chrome Android Browser");
       this.isScanning = false;
     }
   }
@@ -166,7 +166,7 @@ export class AppComponent {
     this.notify(id);
   }
 
-  write(id: string) {
-
+  write() {
+    console.log("TODO: test : write on NFC Tag");
   }
 }
