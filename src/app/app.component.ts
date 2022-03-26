@@ -25,8 +25,6 @@ export class AppComponent implements OnInit{
       try {
         const ndef = new (window as any).NDEFReader();
         await ndef.scan();
-        console.log("> Scan started");
-        alert("Scanning a tag...");
   
         ndef.addEventListener("readingerror", () => {
           console.log("Argh! Cannot read data from the NFC tag. Try another one?");
@@ -34,7 +32,11 @@ export class AppComponent implements OnInit{
         });
   
         ndef.addEventListener("reading", ({ message, serialNumber }: { message: any, serialNumber: string }) => {
-  
+          // serialNumber ausgeben
+          // in app.component.html anzeigen lassen
+
+          alert("Scanning a taaaaag..." + serialNumber);
+          console.log("serial number of tag " + serialNumber);
         
         });
       } catch (error) {
