@@ -35,12 +35,12 @@ export class AppComponent implements OnInit{
           // serialNumber ausgeben
           // in app.component.html anzeigen lassen
 
-          alert("Scanning a taaaaag..." + serialNumber);
+          alert("Serial number of the tag: " + serialNumber);
           console.log("serial number of tag " + serialNumber);
         
         });
       } catch (error) {
-        alert(error + " try it on smartphone with Chrome Android Browser");
+        alert(error + ". Try it on smartphone with Chrome Android Browser");
         
       }
     }
