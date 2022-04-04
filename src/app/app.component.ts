@@ -21,7 +21,7 @@ export class AppComponent implements OnInit{
 
   title = 'soo-nfc-scanner';
 
-    async start() {
+    async scan() {  // (click)="scan()"
       try {
         const ndef = new (window as any).NDEFReader();
         await ndef.scan();
@@ -35,7 +35,26 @@ export class AppComponent implements OnInit{
           // serialNumber ausgeben
           // in app.component.html anzeigen lassen
 
-          alert("Serial number of the tag: " + serialNumber);
+          alert("Serial number of the tag: " + serialNumber + message);
+          console.log("serial number of tag " + serialNumber);
+        
+        });
+      } catch (error) {
+        alert(error + ". Try it on smartphone with Chrome Android Browser");
+        
+      }
+    }
+
+    async write() {  // (click)="write()"
+      try {
+        const ndef = new (window as any).NDEFReader();
+        await ndef.write("message").then(() => {alert('message written')});
+  
+        ndef.addEventListener("reading", ({ message, serialNumber }: { message: any, serialNumber: string }) => {
+          // serialNumber ausgeben
+          // in app.component.html anzeigen lassen
+
+          alert("Serial number" + serialNumber + "and message" + message + "of the tag: ");
           console.log("serial number of tag " + serialNumber);
         
         });
