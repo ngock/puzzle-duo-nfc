@@ -47,7 +47,7 @@ export class AppComponent implements OnInit{
     async write() {  // (click)="write()"
       try {
         const ndef = new (window as any).NDEFReader();
-        await ndef.write("fighting").then(() => {alert('message written')});
+        await ndef.write("fighting 09.05", {overwrite: false}).then(() => {alert('message written')});
         await this.scan();
   
       } catch (error) {
