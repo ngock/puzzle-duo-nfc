@@ -1,4 +1,6 @@
-# NfcNaya
+# This PWA project was inspired from the NfcNaya. This was also partly used for my thesis about WebNFC Technology.
+
+Link to my project (under construction): https://nfc-angular.web.app/
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.1.4.
 
